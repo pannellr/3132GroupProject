@@ -1,0 +1,9 @@
+RewriteEngine On
+
+#add your login in the rewrite rule
+RewriteBase /~pannell/design_patterns
+RewriteCond %{REQUEST_URI} !/css
+RewriteCond %{REQUEST_URI} !/js
+RewriteCond %{REQUEST_URI} !/img
+RewriteRule ^(.+)/(.+)/?([a-zA-Z0-9/]*)$ index.cgi?class=$1&method=$2 [QSA,L]
+RewriteRule ^$ index.cgi
