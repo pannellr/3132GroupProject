@@ -7,6 +7,7 @@ A simple python website using cgi
 
 Installation:
 Create your own branch using your cs login
+
 Log on Bluenose and go into your public_html directory
 
 and then use: 
