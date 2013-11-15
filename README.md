@@ -12,9 +12,9 @@ Log on Bluenose and go into your public_html directory
 
 and then use: 
 
-git clone [the clone url on the right side of the page]
+git clone [the clone url on the right side of the page for your branch on github]
 
-to pull the code into that directory
+which copies the code from your branch into that directory
 
 change the permissions
 
