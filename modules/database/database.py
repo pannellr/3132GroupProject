@@ -23,9 +23,4 @@ class Database:
                                                self.database_name
                                                )
 
-    def query(self, q):
-        cursor = self.database_handle.cursor()
-        cursor.execute(q)
-        return cursor.fetchall
-
     
