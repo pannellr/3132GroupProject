@@ -9,6 +9,8 @@ class Database:
     database_host = ''
     database_handle = ''
 
+
+
     def __init__(self, name, user, password, host):
         self.database_name = name
         self.database_user = user
@@ -24,3 +26,5 @@ class Database:
                                                )
 
     
+    def dump(self):
+        print self
