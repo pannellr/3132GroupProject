@@ -1,17 +1,19 @@
+#!/usr/bin/env python
+
 import MySQLdb
 
 class Database:
 
     #values needed to establish connection
-    database_name = ''
-    database_user = ''
-    database_pass = ''
-    database_host = ''
-    database_handle = ''
+    database_name = None
+    database_user = None
+    database_pass = None
+    database_host = None
+    database_handle = None
 
 
 
-    def __init__(self, name, user, password, host):
+    def __init__(self, name=None, user=None, password=None, host=None):
         self.database_name = name
         self.database_user = user
         self.database_pass = password
@@ -21,10 +23,5 @@ class Database:
         self.database_handle = MySQLdb.connect(self.database_host,
                                                self.database_user,
                                                self.database_pass,
-                                               self.database_host,
                                                self.database_name
                                                )
-
-    
-    def dump(self):
-        print self
