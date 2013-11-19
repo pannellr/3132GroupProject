@@ -14,3 +14,8 @@ select = SelectBuilder()
 select.setStatement('select * from')
 
 print select.getStatement()
+
+select.setTables('from users')
+
+print select.getTables()
+
