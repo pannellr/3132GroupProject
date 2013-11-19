@@ -1,3 +1,11 @@
 class Tables:
     string = None
-    #could be expanded to accept tables and aliases
+
+    def __init__(self):
+        string = ''
+
+    def setString(self, s):
+        self.string = s
+
+    def getString(self):
+        return self.string
