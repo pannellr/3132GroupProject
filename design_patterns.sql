@@ -102,7 +102,7 @@ DROP TABLE IF EXISTS `zones`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `zones` (
   `zone_id` int(11) NOT NULL AUTO_INCREMENT,
-  `zokne_name` varchar(32) DEFAULT NULL,
+  `zone_name` varchar(32) DEFAULT NULL,
   `ne_lat` decimal(9,6) DEFAULT NULL,
   `ne_lng` decimal(9,6) DEFAULT NULL,
   `se_lat` decimal(9,6) DEFAULT NULL,
@@ -134,4 +134,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-18 19:48:12
+-- Dump completed on 2013-11-20 10:56:49
