@@ -30,7 +30,10 @@ class Database:
                                                ))
 
     def execute(self, querybuilder):
-        director = Director(querybuilder)
-        results = self.database_hangle.getInstance(director.getQuery())
-        return results
+        director = QueryDirector(querybuilder)
+        q = director.getQuery()
+        print q
+
+
+    
     
