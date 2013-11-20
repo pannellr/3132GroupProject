@@ -10,12 +10,6 @@ from limit import Limit
 
 class SelectBuilder(QueryBuilder):
 
-    statement = None
-    tables = None
-    where = None
-    group = None
-    order = None
-    limit = None
 
     def __init__(self):
         self.statement = Statement()
@@ -26,19 +20,38 @@ class SelectBuilder(QueryBuilder):
         self.limit = Limit()
 
     def setStatement(self, statement):
-        self.statement.setString(statement)
+        self.statement.string = statement
     
     def getStatement(self):
-        return self.statement.getString()
+        return self.statement.string
 
     def setTables(self, tables):
         self.tables.string = tables
     
     def getTables(self):
-        return self.tables.getString()
+        return self.tables.string
         
-    def getWhere(self): pass
-    def getGroup(self): pass
-    def getOrder(self): pass
-    def getLimit(self): pass
+    def getWhere(self):
+        return self.where.string
+
+    def setWhere(self, where):
+        self.where.string = where
+        
+    def getGroup(self):
+        return self.group.string
+
+    def setGroup(self, group):
+        self.group.string = group
+        
+    def getOrder(self):
+        return self.order.string
+    
+    def setOrder(self, order):
+        self.order.string = order
+        
+    def getLimit(self):
+        return self.limit.string
+
+    def setLimit(self):
+        self.limit.string = self
     
