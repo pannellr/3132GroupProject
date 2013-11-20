@@ -1,2 +1,2 @@
 class Limit:
-    string = None
+    string = ''
