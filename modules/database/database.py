@@ -31,8 +31,9 @@ class Database:
 
     def execute(self, querybuilder):
         director = QueryDirector(querybuilder)
-        q = director.getQuery()
-        print q
+        self.database_handle.getInstance().query(director.getQuery())
+        results = self.database_handle.getInstance().store_result()
+        return results
 
 
     

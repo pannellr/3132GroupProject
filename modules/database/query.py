@@ -28,7 +28,18 @@ class Query:
         self.__limit = limit
 
     def build(self):
-        #return a string representing the query
-        q = self.__statement + ' ' + self.__tables + ' ' + self.__where + ' ' + self.__group + ' ' + self.__order + ' ' + self.__limit
-        print q
+        q = self.__statement + ' ' + self.__tables
+
+        if self.__where:
+            q += ' ' + self.__where
+
+        if self.__group:
+            q += ' ' + self.__group
+
+        if self.__order:
+            q += ' ' + self.__order
+
+        if self.__limit:
+            q += ' ' + self.__limit
+
         return q
