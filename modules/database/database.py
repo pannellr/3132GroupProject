@@ -1,5 +1,4 @@
 import MySQLdb
-
 class Database:
 
     #values needed to establish connection
@@ -8,6 +7,7 @@ class Database:
     database_pass = ''
     database_host = ''
     database_handle = ''
+    _builder=None
 
     def __init__(self, name, user, password, host):
         self.database_name = name
@@ -22,5 +22,14 @@ class Database:
                                                self.database_host,
                                                self.database_name
                                                )
-
+    def select(self):
+        if !self._builder:
+            self._builder=SelectBuilder()
+        return self._builder
     
+    def insert():
+        
+    def delete():
+        
+    def update():
+        
