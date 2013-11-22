@@ -27,6 +27,19 @@ class Query:
     def setLimit(self, limit):
         self.__limit = limit
 
-    def getQuery(self):
-        #return a string representing the query
-        return self.__statement + self.__tables + self.__where + self.__group + self.__order + self.__limit
+    def build(self):
+        q = self.__statement + ' ' + self.__tables
+
+        if self.__where:
+            q += ' ' + self.__where
+
+        if self.__group:
+            q += ' ' + self.__group
+
+        if self.__order:
+            q += ' ' + self.__order
+
+        if self.__limit:
+            q += ' ' + self.__limit
+
+        return q
