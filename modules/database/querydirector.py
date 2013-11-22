@@ -1,18 +1,20 @@
 #with help from https://gist.github.com/pazdera/1121157
 
+from query import Query
+
 class QueryDirector:
 
     __builder = None
 
-    def setBuilder(self, builder):
+    def __init__(self, builder):
         self.__builder = builder
 
     # Assemble the query
     def getQuery(self):
         query = Query()
 
-        select = self.__builder.getSelect()
-        query.setSelect(select)
+        select = self.__builder.getStatement()
+        query.setStatement(select)
 
         #from/join tables
         tables = self.__builder.getTables()
@@ -32,6 +34,6 @@ class QueryDirector:
 
         #limit
         limit = self.__builder.getLimit()
-        query.getLimit()
+        query.setLimit(limit)
 
-        return query
+        return query.build()
