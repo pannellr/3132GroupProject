@@ -51,6 +51,9 @@ class Post(Subject):
         post = None
         return post
 
+    def save(self):
+        return True
+
     def update(self, post_id, fields):
         return True
 
