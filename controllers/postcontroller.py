@@ -25,17 +25,23 @@ class PostController(MasterController):
 
         return posts
 
+
     def new(self, args):
         #should we check permissions here?
         return this.markup(args)
 
     def create(self, args):
+        # Attach view to be updated
+        _post.attach('show')
+        # set fields
         _post.post(args['post'])
-        #_post.user_id(args['user_id'])
-        #_post.zone_id(fetch_zone_for(args['lat'], args['lng]
+        _post.user_id(args['user_id'])
+        _post.lat(args['lat'])
+        _post.lng(args['lng'])
+
+        #save post
         _post.save()
         
-
     def edit(self, args):
         post_id = args['post_id']
 
