@@ -302,3 +302,100 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+body {
+	background-color: #0A400A;
+	font-size: 14px;
+	font-family: tahoma;
+	margin: 10px;
+}
+#wrap {
+    height: 600px;
+    padding: 5px;
+	border-radius: 15px;
+	border: 3px solid white;
+	background: white;
+	font-size: 12px;
+}
+
+#wrap2 {
+	width:100%;
+	border-radius: 15px;
+	border: 3px solid white;
+	background: white;
+	padding: 15px;	
+	font-size: 12px;
+}
+#wrap4 {
+	width:100%;
+	border-radius: 15px;
+	border: 3px solid white;
+	background: white;
+	padding: 15px;	
+	font-size: 12px;
+	float: right;
+}
+#wrap3 {
+	text-align:left;
+}
+#map {
+	width:100%;
+	height:500px;
+	float: left;
+	text-align:center;
+	border-radius: 15px;
+	border: 3px solid #0A400A;
+}
+
+#postTools {
+	width:100%;
+	height:25px;
+	text-align: center;
+}
+#Rpost {
+	width:100%;
+	height:500px;
+	float: right;
+	text-align:center;
+	border-radius: 15px;
+	border: 3px solid #0A400A;
+}
+#wrap5 {
+	position: relative;
+    width: 100%;
+	bottom: -10px;
+	height:60%;
+	border-radius: 15px;
+	border: 3px solid white;
+	background: white;
+	padding: 15px;	
+	font-size: 12px;
+	float: right;
+}
+h1,h2, h3 {
+		line-height: 1%;
+}
+
+
+
+.content-wrapper {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.map-area{
+  width: 40%;
+  margin: 0;
+  float: left;
+}
+
+.post-area{
+  width: 55%;
+  margin: 0;
+  float: right;
+}
+
+button {
+  padding: 5px;
+  margin: 3px;
+}
