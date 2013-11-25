@@ -55,3 +55,5 @@ class SelectBuilder(QueryBuilder):
     def setLimit(self):
         self.limit.string = self
     
+    def commitMethod(self):
+        return 'no'
