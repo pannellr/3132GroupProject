@@ -3,8 +3,8 @@
 ##with help from http://code.activestate.com/recipes/131499-observer-pattern/
 
 import sys
-sys.path.append('../modules/database')
-from database import Database
+sys.path.append('../')
+import imports
 
 class Subject():
 
@@ -33,9 +33,9 @@ class Subject():
             if modifier != observer:
                 observer.update(self)
 
-    def message(self, message):
-        this._message = message
+    def setMessage(self, m):
+        self._message = m
 
     def message(self):
-        return this._message
+        return self._message
         
