@@ -1,8 +1,10 @@
-#!/usr/bin/env python
+#!//bin/env python
 
 import sys
 sys.path.append('../')
+import json
 import imports
+
 
 from posts import Post
 
@@ -20,8 +22,14 @@ class PostController(MasterController):
 
     def show(self, args=None):
         post_id = None
+        api = False
         if args:
-          post_id = args['post_id']
+          if args['post_id']:  
+              post_id = args['post_id']
+
+          if args['api']:
+              api = True
+              
         posts = None
         content = None
         
@@ -31,12 +39,12 @@ class PostController(MasterController):
             posts = self._post.all()
         
 
-        if args['api']:
+        if api:
             content = json.dumps(posts)
         else:
             content = self.markup(posts)
 
-        return posts
+        print content
 
 
     def new(self, args):
