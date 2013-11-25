@@ -7,14 +7,16 @@
         zoom: 16,
         mapTypeId: google.maps.MapTypeId.ROADMAP
       };
-      map = new google.maps.Map(document.getElementById("map-canvas"),
+      map = new google.maps.Map(document.getElementById("map"),
         mapOptions);
-      
+
       addMarker(position);
-      
+
     }
-    google.maps.event.addDomListener(document.getElementById("button"), 'click', getLocation);
-    google.maps.event.addDomListener(window, 'load', initialize);
+     google.maps.event.addDomListener(window, 'load', initialize);
+
+	google.maps.event.addDomListener(document.getElementById("button"), 'click', getLocation);
+
 
     function getLocation()
     {

@@ -304,22 +304,29 @@ textarea {
 }
 
 body {
-	background-color: #0A400A;
+	background-image: -webkit-linear-gradient(bottom, #B3FFC4 0%, #089968 100%);
 	font-size: 14px;
 	font-family: tahoma;
 	margin: 10px;
 }
 #wrap {
-    height: 600px;
-    padding: 5px;
+	width:40%;
+	margin-top:30px;
+	margin:auto;
+	margin-left: 170px;
+	height:60%;
 	border-radius: 15px;
 	border: 3px solid white;
 	background: white;
+	padding: 15px;	
 	font-size: 12px;
+	float: left;
 }
 
 #wrap2 {
-	width:100%;
+	width:80%;
+	margin-top:30px;
+	margin:auto;
 	border-radius: 15px;
 	border: 3px solid white;
 	background: white;
@@ -327,7 +334,11 @@ body {
 	font-size: 12px;
 }
 #wrap4 {
-	width:100%;
+	width:35%;
+	margin-top:30px;
+	margin:auto;
+	margin-right: 170px;
+	height:%;
 	border-radius: 15px;
 	border: 3px solid white;
 	background: white;
@@ -348,12 +359,14 @@ body {
 }
 
 #postTools {
-	width:100%;
+	width:32%;
 	height:25px;
+	float: right;
 	text-align: center;
 }
 #Rpost {
-	width:100%;
+	margin-top:10px;
+	width:35%;
 	height:500px;
 	float: right;
 	text-align:center;
@@ -362,8 +375,11 @@ body {
 }
 #wrap5 {
 	position: relative;
-    width: 100%;
+	width:35%;
 	bottom: -10px;
+	margin-top:30px;
+	margin:auto;
+	margin-right: 170px;
 	height:60%;
 	border-radius: 15px;
 	border: 3px solid white;
@@ -374,28 +390,4 @@ body {
 }
 h1,h2, h3 {
 		line-height: 1%;
-}
-
-
-
-.content-wrapper {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.map-area{
-  width: 40%;
-  margin: 0;
-  float: left;
-}
-
-.post-area{
-  width: 55%;
-  margin: 0;
-  float: right;
-}
-
-button {
-  padding: 5px;
-  margin: 3px;
 }
