@@ -6,7 +6,10 @@ import sys
 sys.path.append('../')
 import imports
 
-class Subject():
+from database import Database
+from selectbuilder import SelectBuilder
+
+class Subject(object):
 
     _observers = None
     _db = None
@@ -15,12 +18,11 @@ class Subject():
     def __init__(self):
         self._observers = []
         self._db = Database('pannell', 'pannell', 'B00609201', 'db.cs.dal.ca')
-        serl.db.connect()
+        self._db.connect()
 
     def attach(self, observer):
         if not observer in self._observers:
             self._observers.append(observer)
-
 
     def detach(self, observer):
         try:
@@ -33,9 +35,20 @@ class Subject():
             if modifier != observer:
                 observer.update(self)
 
+    def all(self, tableName):
+        print self._db        
+        select = SelectBuilder()
+        select.setStatement('select *')
+        select.setTables('from ' + tableName)
+        results = self._db.execute(select)
+        return results
+
+
+    #accesors for error messages
     def setMessage(self, m):
         self._message = m
 
     def message(self):
         return self._message
         
+    
