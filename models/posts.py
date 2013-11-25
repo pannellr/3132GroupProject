@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/local/bin/python
 
 from subject import Subject
 

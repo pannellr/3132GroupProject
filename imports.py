@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/local/bin/python
 
 import sys
 sys.path.append('modules/database')
