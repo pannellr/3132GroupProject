@@ -11,11 +11,12 @@ class Post(Subject):
 
     
     def __init__(self, post_id=None, post=None, user_id=None, lat=None, lng=None):
-        super(Post, self).__init__()
+        #super(Post, self).__init__()
         self._post_id = post_id
         self._post = post
         self._user_id = user_id
-        self._zone_id = self.fetch_zone_for(lat, lng)
+        self._lat = lat
+        self._lng = lng
 
     # Accesors
     def post(self):
@@ -52,32 +53,33 @@ class Post(Subject):
 
     # Database methods
     def all(self):
-        all = None
-        return all
+        posts = self._db.query('select * from posts')
+        return posts
 
     def fetch(self, post_id):
-        post = None
+        post = self._db.query('select * from posts where post_id = ' + post_id)
         return post
 
-    def save(self, view):
-        if this._post_id:
-            this.update(self)
+    def save(self):
+        if self._post_id:
+            self.update(self)
         else:
             try:
-                this._db.query('insert into posts (user_id, post, lat, lng) values ("1",' + self._post() + ', "44.34567", "-66.78945")')
-            except:
-                this._message('Post could not be created')
+                self._db.query('insert into posts (user_id, post, lat, lng) values ("1", "' + self._post() + '" , "44.34567", "-66.78945")').commit()
+            except: Exception, e: print repr(e)
+                
         # notify upserver
-        self.notify()
+#        self.notify()
         
 
     def update(self, post):
         try:
-            this._db.query('update posts set user_id ="'+post.user_id()+'", post = "'+post.post()+'", lat ="'+post.lat()+'", lng = "'+post.lng()+'" where post_id = "' + post.post_id())
+            self._db.query('update posts set user_id ="'+post.user_id()+'", post = "'+post.post()+'", lat ="'+post.lat()+'", lng = "'+post.lng()+'" where post_id = "' + post.post_id()).commit()
         except:
-            this._message('Post could not be updated')
-
-        self.notify()
+            #self.setMessage('Post could not be updated')
+            print "query failed"
+            
+ #       self.notify()
 
     def delete(self, post_id):
-        return True
+        self._db.query('delete from posts where post_id = ' + post_id)
