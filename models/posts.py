@@ -2,6 +2,7 @@
 
 from subject import Subject
 
+
 class Post(Subject):
     _post_id = None
     _user_id = None
@@ -9,9 +10,9 @@ class Post(Subject):
     _lng = None
     _post = None
 
-    
+     
     def __init__(self, post_id=None, post=None, user_id=None, lat=None, lng=None):
-        #super(Post, self).__init__()
+        super(Post, self).__init__()
         self._post_id = post_id
         self._post = post
         self._user_id = user_id
@@ -53,8 +54,8 @@ class Post(Subject):
 
     # Database methods
     def all(self):
-        posts = self._db.query('select * from posts')
-        return posts
+        return super(Post, self).all('posts')
+        
 
     def fetch(self, post_id):
         post = self._db.query('select * from posts where post_id = ' + post_id)
@@ -66,7 +67,7 @@ class Post(Subject):
         else:
             try:
                 self._db.query('insert into posts (user_id, post, lat, lng) values ("1", "' + self._post() + '" , "44.34567", "-66.78945")').commit()
-            except: Exception, e: print repr(e)
+            except: print "Could not insert record"
                 
         # notify upserver
 #        self.notify()
