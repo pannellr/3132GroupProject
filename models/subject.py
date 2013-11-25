@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/local/bin/python
 
 ##with help from http://code.activestate.com/recipes/131499-observer-pattern/
 
