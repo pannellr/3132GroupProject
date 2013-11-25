@@ -23,16 +23,18 @@ class Database:
         self.database_handle = Singleton()
 
     def connect(self):
-        self.database_handle.setInstance(MySQLdb.connect(self.database_host,
-                                               self.database_user,
-                                               self.database_pass,
-                                               self.database_name
-                                               ))
+        conn = MySQLdb.connect(self.database_host, self.database_user, self.database_pass, self.database_name)
+        self.database_handle.setInstance(conn)
 
     def execute(self, querybuilder):
+        results = None
         director = QueryDirector(querybuilder)
-        q = director.getQuery()
-        print q
+        self.database_handle.getInstance().query(director.getQuery())
+        if (querybuilder.commitMethod() == 'commit'):
+            results = self.database_handle.getInstance().commit()
+        else:
+            results = self.database_handle.getInstance().store_result()
+        return results
 
 
     
