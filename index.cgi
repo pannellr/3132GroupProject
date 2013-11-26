@@ -19,11 +19,8 @@ print "Content-Type: text/html"     # HTML is following
 print                               # blank line, end of headers
 print header
 
+#params = dict('user' = user, 'session' = session)
+
 print c.show()
-
-
-#body design
-print body
-
 
 print footer

@@ -391,3 +391,28 @@ body {
 h1,h2, h3 {
 		line-height: 1%;
 }
+
+.post-wrapper{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.post-author {
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.post-location{
+  font-weight: bold;
+  padding 5px;
+}
+
+.post-content{
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+.post-form-submit{
+  padding: 5px;
+  margin-top: 15px;
+}
