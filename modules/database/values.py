@@ -1,4 +1,4 @@
 #!/usr/bin/env python
 
-class Statement:
+class Values:
     string = ''
