@@ -50,5 +50,5 @@ and you can see that username and password are passed into their own variables.
 
 The main page also uses the HTML5 boilerplate so all of the standard web goodis like modernizer and jQuery are ready to go.
 
-
+For testing purposes you also need to change the url in the models/subject.py notify method() to be your url, otherwise it will reroute to my site all of the time and it will be very confusing.
 

@@ -302,3 +302,117 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+body {
+	background-image: -webkit-linear-gradient(bottom, #B3FFC4 0%, #089968 100%);
+	font-size: 14px;
+	font-family: tahoma;
+	margin: 10px;
+}
+#wrap {
+	width:40%;
+	margin-top:30px;
+	margin:auto;
+	margin-left: 170px;
+	height:60%;
+	border-radius: 15px;
+	border: 3px solid white;
+	background: white;
+	padding: 15px;	
+	font-size: 12px;
+	float: left;
+}
+
+#wrap2 {
+	width:80%;
+	margin-top:30px;
+	margin:auto;
+	border-radius: 15px;
+	border: 3px solid white;
+	background: white;
+	padding: 15px;	
+	font-size: 12px;
+}
+#wrap4 {
+	width:35%;
+	margin-top:30px;
+	margin:auto;
+	margin-right: 170px;
+	height:%;
+	border-radius: 15px;
+	border: 3px solid white;
+	background: white;
+	padding: 15px;	
+	font-size: 12px;
+	float: right;
+}
+#wrap3 {
+	text-align:left;
+}
+#map {
+	width:100%;
+	height:500px;
+	float: left;
+	text-align:center;
+	border-radius: 15px;
+	border: 3px solid #0A400A;
+}
+
+#postTools {
+	width:32%;
+	height:25px;
+	float: right;
+	text-align: center;
+}
+#Rpost {
+	margin-top:10px;
+	width:35%;
+	height:500px;
+	float: right;
+	text-align:center;
+	border-radius: 15px;
+	border: 3px solid #0A400A;
+}
+#wrap5 {
+	position: relative;
+	width:35%;
+	bottom: -10px;
+	margin-top:30px;
+	margin:auto;
+	margin-right: 170px;
+	height:60%;
+	border-radius: 15px;
+	border: 3px solid white;
+	background: white;
+	padding: 15px;	
+	font-size: 12px;
+	float: right;
+}
+h1,h2, h3 {
+		line-height: 1%;
+}
+
+.post-wrapper{
+  width: 100%;
+  margin-top: 10px;
+}
+
+.post-author {
+  padding: 5px;
+  margin-right: 20px;
+}
+
+.post-location{
+  font-weight: bold;
+  padding 5px;
+}
+
+.post-content{
+  padding: 5px;
+  font-size: 1.1em;
+}
+
+.post-form-submit{
+  padding: 5px;
+  margin-top: 15px;
+}
