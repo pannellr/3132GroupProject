@@ -1,13 +1,14 @@
 #!/local/bin/python
 
 ##with help from http://code.activestate.com/recipes/131499-observer-pattern/
-
+import cgi
 import sys
 sys.path.append('../')
 import imports
 
 from database import Database
 from selectbuilder import SelectBuilder
+from insertbuilder import InsertBuilder
 
 class Subject(object):
 
@@ -31,12 +32,17 @@ class Subject(object):
             pass
 
     def notify(self, modifier=None):
-        for observer in self._observers:
-            if modifier != observer:
-                observer.update(self)
+        url = "http://web.cs.dal.ca/~pannell/3132GroupProject/"
+        print "Status: 302 Moved"
+        print "Location: %s" % url
+        print
+        
+        #for observer in self._observers:
+        #    if modifier != observer:
+        #       print modifier
+                
 
     def all(self, tableName):
-        print self._db        
         select = SelectBuilder()
         select.setStatement('select *')
         select.setTables('from ' + tableName)

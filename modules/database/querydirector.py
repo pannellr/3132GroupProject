@@ -16,24 +16,24 @@ class QueryDirector:
         select = self.__builder.getStatement()
         query.setStatement(select)
 
-        #from/join tables
-        tables = self.__builder.getTables()
-        query.setTables(tables)
 
-        #where
-        where = self.__builder.getWhere()
-        query.setWhere(where)
+        if self.__builder.commitMethod() == 'commit':
+            values = self.__builder.getValues()
+            query.setValues(values)
+        else:
+            tables = self.__builder.getTables()
+            query.setTables(tables)
 
-        #group
-        group = self.__builder.getGroup()
-        query.setGroup(group)
+            where = self.__builder.getWhere()
+            query.setWhere(where)
 
-        #order
-        order = self.__builder.getOrder()
-        query.setOrder(order)
+            group = self.__builder.getGroup()
+            query.setGroup(group)
 
-        #limit
-        limit = self.__builder.getLimit()
-        query.setLimit(limit)
+            order = self.__builder.getOrder()
+            query.setOrder(order)
+
+            limit = self.__builder.getLimit()
+            query.setLimit(limit)
 
         return query.build()
