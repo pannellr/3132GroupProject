@@ -1,6 +1,7 @@
 #!/local/bin/python
 
 from subject import Subject
+from insertbuilder import InsertBuilder
 
 
 class Post(Subject):
@@ -66,11 +67,13 @@ class Post(Subject):
             self.update(self)
         else:
             try:
-                self._db.query('insert into posts (user_id, post, lat, lng) values ("1", "' + self._post() + '" , "44.34567", "-66.78945")').commit()
+                insert = InsertBuilder()
+                insert.setStatement('insert into posts (user_id, post, lat, lng)')
+                insert.setValues('values ("1", "' + self._post + '" , "44.34567", "-66.78945")')
+                self._db.execute(insert);
             except: print "Could not insert record"
-                
-        # notify upserver
-#        self.notify()
+
+            self.notify()
         
 
     def update(self, post):

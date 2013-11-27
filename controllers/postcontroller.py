@@ -1,14 +1,14 @@
 #!//bin/env python
 
+# add imports to path
 import sys
 sys.path.append('../')
-import json
 import imports
-
-
+# add json for API
+import json
+## import the Post model
 from posts import Post
-
-#import json
+#import MasterController for inheritance
 from mastercontroller import MasterController
 
 
@@ -53,15 +53,15 @@ class PostController(MasterController):
 
     def create(self, args):
         # Attach view to be updated
-        _post.attach('show')
+        self._post.attach(self.show())
         # set fields
-        _post.post(args['post'])
-        _post.user_id(args['user_id'])
-        _post.lat(args['lat'])
-        _post.lng(args['lng'])
+        self._post.post(args['post'])
+        #_post.user_id(args['user_id'])
+        #_post.lat(args['lat'])
+        #_post.lng(args['lng'])
 
         #save post
-        _post.save()
+        self._post.save()
         
     def edit(self, args):
         post_id = args['post_id']
