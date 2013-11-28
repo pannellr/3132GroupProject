@@ -6,14 +6,14 @@ Class State(object):
    def __str__( self ):
 		return self.__doc__
 		 
-Class ActivieState(State):
+Class Activiestate(State):
    def process(user):
 		print "User ID  = %s" % user.user_id 
 		print "logged in"
 		return
 	
 	
-Class ExpiredState(State):
+Class Expiredstate(State):
    def process(user):
 		print "User ID  = %s" % user.user_id 
 		print "not logged in"

@@ -11,7 +11,7 @@ class Session(object):
     global cookie
     def __init__(self, user = None):
         self.state = None
-	 global cookie
+        global cookie
         cookie = Cookie.SimpleCookie()
         cookie['user_id'] = None
         if user is not None:
