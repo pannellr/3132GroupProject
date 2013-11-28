@@ -74,13 +74,13 @@ class User(Subject):
 	#Returns a user's password		
     def return_pw()(self, user):
         select = SelectBuilder()
-		select.setStatement('SELECT usr_pw')
-		select.setTables('posts')
-		select.setWhere('user_id="'+user.user_id()+'"')
+		select.setStatement('SELECT password')
+		select.setTables('from posts')
+		select.setWhere('where user_id="'+user.user_id()+'"')
 		director = QueryDirector(select)
 		
 		try:
-            this.user_pw_true = this._db.query(director.getQuery())
+            this.user_pw_true = this._db.execute(director.getQuery())
         except:
             this._message('Could not locate password forthis user')
         self.notify()
