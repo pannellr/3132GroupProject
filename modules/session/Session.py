@@ -8,7 +8,6 @@ import random
 		
 class Session(object):
 
-    global cookie
     def __init__(self, user = None):
         self.state = None
         global cookie
@@ -23,7 +22,7 @@ class Session(object):
     def getState(self):
         #string_cookie = os.environ.get('HTTP_COOKIE')
         # If new session
-        if cookie['user_id'] is None:
+        if cookie['user_id'].value=="None":
         #self.state = Expiredstate()
         #state.process(user)
             return False
