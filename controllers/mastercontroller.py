@@ -4,7 +4,7 @@ import sys
 sys.path.append('../')
 import imports
 
-from session import Session
+from Session import Session
 
 class MasterController:
 
