@@ -37,7 +37,7 @@ class MasterController:
             markup += '<span class="post-author">Author: '
             markup += str(post[0]['user_id'])
             markup += '</span>'
-            markup += '<span class="post-location">'
+            markup += '<span class="post-location" data-lat="' + str(post[0]['lat']) + '" data-lng="' + str(post[0]['lng']) + '">'
             markup += 'lat: ' + str(post[0]['lat']) + ' lng: ' + str(post[0]['lng'])
             markup += '</span>'
             markup += '<div class="post-content">'
