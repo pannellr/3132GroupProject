@@ -15,8 +15,12 @@
     }
      google.maps.event.addDomListener(window, 'load', initialize);
 
-	google.maps.event.addDomListener(document.getElementById("button"), 'click', getLocation);
+	//google.maps.event.addDomListener(document.getElementById("button"), 'click', getLocation);
 
+    $('.post-form').submit(function(e) {
+      e.preventDefault();
+      console.log(position);
+    });
 
     function getLocation()
     {

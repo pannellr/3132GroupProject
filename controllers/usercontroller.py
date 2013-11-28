@@ -15,5 +15,7 @@ class UserController(MasterController):
 
     _user = None
 
-    def __init__(self, user):
-        self._user + user
+
+    def login(self, args):
+        
+

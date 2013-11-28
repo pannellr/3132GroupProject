@@ -1,8 +1,16 @@
 #!/user/bin/env python
 
+import sys
+sys.path.append('../')
+import imports
+
+from session import Session
+
 class MasterController:
 
     def markup(self, posts):
+
+        session = Session()
         
         markup = ''
         markup += '<div id="wrap2">'
@@ -18,16 +26,31 @@ class MasterController:
 
         markup += '<div id="wrap4">'
 
-        #if logged in
-        markup += '<form action="post/create" method="GET" class="post-form">'
-        markup += '<p>'
-        markup += '<label for="post">Post</label><br />'
-        markup += '<textarea name="post" rows="5" cols="80"></textarea><br />'
-        markup += '<input type="submit" value="Post" class="post-form-submit"/>'
-        markup += '</p>'
-        markup += '</form>'
 
-        #if not logged in
+        if session.getState():
+        
+            markup += '<form action="post/create" method="GET" class="post-form">'
+            markup += '<p>'
+            markup += '<label for="post">Post</label><br />'
+            markup += '<textarea name="post" rows="5" cols="80"></textarea><br />'
+            markup += '<input type="submit" value="Post" class="post-form-submit"/>'
+            markup += '</p>'
+            markup += '</form>'
+
+        else:
+
+            markup += '<form action="user/login" method="POST" class="login-form">'
+            markup += '<p>'
+            markup += '<label for="user_name">User Name</label><br />'
+            markup += '<input name="user_name" />'
+            markup += '</p>'
+            markup += '<p>'
+            markup += '<label for="password">Password</label><br />'
+            markup += '<input type="password" name="user_name" />'
+            markup += '</p>'
+            markup += '<input type="submit" value="Login" class="login-form-submit"/>'
+            markup += '</p>'
+            markup += '</form>'
         
         
         while True:

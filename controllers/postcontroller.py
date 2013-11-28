@@ -24,10 +24,9 @@ class PostController(MasterController):
         post_id = None
         api = False
         if args:
-          if args['post_id']:  
+          if 'post_id' in args.keys():
               post_id = args['post_id']
-
-          if args['api']:
+          if 'api' in args.keys():
               api = True
               
         posts = None
@@ -40,16 +39,26 @@ class PostController(MasterController):
         
 
         if api:
-            content = json.dumps(posts)
+            posts_dict = dict()
+            while True:
+                post = posts.fetch_row(1,1)
+                if not post: break
+                posts_dict[post[0]['post_id']] = {
+                    'post_id' : post[0]['post_id'],
+                    'user_id' : post[0]['user_id'],
+                    'lat' : str(post[0]['lat']),
+                    'lng' : str(post[0]['lng']),
+                    'post' : post[0]['post'],
+                    'created_at' : str(post[0]['created_at'])
+                    }
+
+            content = json.dumps(posts_dict)
+
+            
         else:
             content = self.markup(posts)
 
         print content
-
-
-    def new(self, args):
-        #should we check permissions here?
-        return this.markup(args)
 
     def create(self, args):
         # Attach view to be updated
