@@ -3,7 +3,6 @@
 from subject import Subject
 from insertbuilder import InsertBuilder
 
-
 class Post(Subject):
     _post_id = None
     _user_id = None

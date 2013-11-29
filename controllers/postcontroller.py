@@ -1,4 +1,4 @@
-#!//bin/env python
+#!/local/bin/python
 
 # add imports to path
 import sys
@@ -11,14 +11,13 @@ from posts import Post
 #import MasterController for inheritance
 from mastercontroller import MasterController
 
-
-
 class PostController(MasterController):
 
     _post = None
 
-    def __init__(self):
+    def __init__(self, args=None):
         self._post = Post()
+        
 
     def show(self, args=None):
         post_id = None

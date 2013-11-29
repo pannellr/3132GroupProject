@@ -1,4 +1,4 @@
-#!/user/bin/env python
+#!/local/bin/python
 
 import sys
 sys.path.append('../')
@@ -8,9 +8,14 @@ from Session import Session
 
 class MasterController:
 
+    _session = None
+
+    def __init__(self):
+        self._session = Session()
+
     def markup(self, posts):
 
-        session = Session()
+        self._session = Session()
         
         markup = ''
         markup += '<div id="wrap2">'
@@ -27,7 +32,7 @@ class MasterController:
         markup += '<div id="wrap4">'
 
 
-        if session.getState():
+        if self._session.getState():
         
             markup += '<form action="post/create" method="GET" class="post-form">'
             markup += '<p>'
@@ -46,7 +51,7 @@ class MasterController:
             markup += '</p>'
             markup += '<p>'
             markup += '<label for="password">Password</label><br />'
-            markup += '<input type="password" name="user_name" />'
+            markup += '<input type="password" name="password" />'
             markup += '</p>'
             markup += '<input type="submit" value="Login" class="login-form-submit"/>'
             markup += '</p>'
