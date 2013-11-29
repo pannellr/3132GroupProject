@@ -1,6 +1,13 @@
     var position=new google.maps.LatLng(44.63694,  -63.58958);
     var pdiv=document.getElementById("demo");
     var map;
+    var lat,lng;
+    var marker = {
+        position: new google.maps.LatLng(lat, lng),
+        title: 'your location',
+        map: map,
+        icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png' 
+    };
     function initialize() {
       var mapOptions = {
         center: position,
@@ -15,11 +22,18 @@
     }
      google.maps.event.addDomListener(window, 'load', initialize);
 
-	//google.maps.event.addDomListener(document.getElementById("button"), 'click', getLocation);
-
+    //google.maps.event.addDomListener(document.getElementById("button"), 'click', getLocation);
+    
     $('.post-form').submit(function(e) {
       e.preventDefault();
       console.log(position);
+    });
+    
+    $('.post-wrapper').each(function(post){
+      lat=post.child('.post-location').attr("data-lat");
+      lng=post.child('.post-location').attr("data-lat");
+      console.log(lat);
+      var drawMarker = new google.maps.Marker(position);
     });
 
     function getLocation()
@@ -42,6 +56,7 @@
     {
       return position;
     }
+
     function addMarker(p) {
       var markerOptions = {
         position: p,
@@ -49,6 +64,6 @@
         map : map,
         icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/blue-dot.png'
       };
-      var marker = new google.maps.Marker(markerOptions);
+      drawMarker = new google.maps.Marker(markerOptions);
 
     }
