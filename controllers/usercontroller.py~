@@ -19,7 +19,7 @@ class UserController(MasterController):
         MasterController.__init__(self)
         self._user = User()
     def login(self, args):
-        #print self._user.return_pw(args['user_name'])
+        print self._user.return_pw(args['user_name'])
         if(self._user.return_pw(args['user_name'])==args['password']):
             user_id = self._user.return_user_id(args['user_name'])
             self._session.setCookie(user_id)

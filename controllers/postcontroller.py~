@@ -18,9 +18,8 @@ class PostController(MasterController):
     _post = None
 
     def __init__(self):
-        MasterController.__init__(self)
         self._post = Post()
-
+        MasterController.__init__()
         
     def show(self, args=None):
         post_id = None
