@@ -1,0 +1,48 @@
+#!/usr/bin/env python
+import sys
+sys.path.append('../')
+import imports
+
+from session import Session
+from subject import Subject
+from selectbuilder import SelectBuilder
+
+class User(Subject):
+    
+    def __init__(self):
+        super(User, self).__init__()
+        
+
+    # Database methods
+    def all(self):
+        all = None
+        return all
+			
+		
+	#Checks a user's password against the input username/password pair
+    def return_pw(self, user_name):
+        select = SelectBuilder()
+        select.setStatement('SELECT password')
+        select.setTables('from users')
+        select.setWhere('where user_name = "'+user_name+'"')
+        result = self._db.execute(select)
+        password = result.fetch_row(1,1)
+        return password[0]['password']
+		
+    def return_user_id(self, user_name):
+        select = SelectBuilder()
+        select.setStatement('SELECT user_id')
+        select.setTables('from users')
+        select.setWhere('where user_name = "'+user_name+'"')
+        result = self._db.execute(select)
+        user_id = result.fetch_row(1,1)
+        return user_id[0]['user_id']
+		
+    def return_user_role(self, user_name):
+        select = SelectBuilder()
+        select.setStaement('SELECT role')
+        selcet.setTables('from users')
+        selcet.setWhere('where user_name = "'+user_name+'"')
+        result = self._db.execute(select)
+        		
+		

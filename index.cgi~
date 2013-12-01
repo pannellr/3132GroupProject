@@ -41,10 +41,10 @@ arg_keys = url_args.keys()
 for key in arg_keys:
     args[key] = url_args.getvalue(key)
 
-if className == 'post' and methodName == 'show':
-    print "Content-Type: text/html"     # HTML is following
-    print                               # blank line, end of headers
-    print header
+#if className == 'post' and methodName == 'show':
+print "Content-Type: text/html"     # HTML is following
+print                               # blank line, end of headers
+print header
 
 #call the class and method from the URL
 getattr(controller, methodName)(args)

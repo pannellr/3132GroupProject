@@ -9,10 +9,10 @@ import random
 class Session(object):
 
     def __init__(self, user = None):
+        #print "session made!"
         self.state = None
         global cookie
         cookie = Cookie.SimpleCookie()
-        cookie['user_id'] = None
         if user is not None:
             self.user_id = user.user_id
             self.user_name = user.user_name
@@ -22,7 +22,7 @@ class Session(object):
     def getState(self):
         #string_cookie = os.environ.get('HTTP_COOKIE')
         # If new session
-        if cookie['user_id'].value=="None":
+        if cookie:
         #self.state = Expiredstate()
         #state.process(user)
             return False
@@ -32,11 +32,9 @@ class Session(object):
             return True
    
     def setCookie(self, num):
-        global cookie
-        cookie = Cookie.SimpleCookie()
         cookie['user_id'] = num
         cookie['user_id']['expires']=1*1*1*10*5
-        print cookie['user_id'].value
+        #print cookie['user_id'].value
     def getUserid(self):
         return cookie['user_id'].value
 		

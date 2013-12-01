@@ -32,7 +32,7 @@ class Subject(object):
             pass
 
     def notify(self, modifier=None):
-        url = "http://web.cs.dal.ca/~pannell/3132GroupProject/"
+        url = "http://web.cs.dal.ca/~kou/3132GroupProject/"
         print "Status: 302 Moved"
         print "Location: %s" % url
         print
