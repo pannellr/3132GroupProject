@@ -1,0 +1,30 @@
+#!/local/bin/python
+
+# add imports to path
+import sys
+sys.path.append('../')
+import imports
+# add json for API
+import json
+#imort the user model
+from users import User
+# imort MasterControler for inheritance
+from mastercontroller import MasterController
+
+class UserController(MasterController):
+
+    _user = None
+
+    def __init__(self):
+        MasterController.__init__(self)
+        self._user = User()
+    def login(self, args):
+        print self._user.return_pw(args['user_name'])
+        if(self._user.return_pw(args['user_name'])==args['password']):
+            user_id = self._user.return_user_id(args['user_name'])
+            self._session.setCookie(user_id)
+            self._user.notify()
+    def logout(self, args):
+        if session.getState():
+            self._session.clear()
+            self._user.notify()
