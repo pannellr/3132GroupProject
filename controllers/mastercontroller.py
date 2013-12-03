@@ -3,24 +3,28 @@
 import sys
 sys.path.append('../')
 import imports
+import os
 
 from Session import Session
 
-class MasterController:
+class MasterController(object):
 
+    #import header and footer
+    HEADER = open("header.html", "r").read()
+    FOOTER = open("footer.html", "r").read()
+    URL_BASE = '/~pannell/3132GroupProject'
+    
     _session = None
 
     def __init__(self):
         self._session = Session()
 
     def markup(self, posts):
-
-        self._session = Session()
         
         markup = ''
         markup += '<div id="wrap2">'
-        markup += '<img border="0" src="gglogo.png" alt="gogeo logo" width="250" height="125">'
-        markup += '<img border="0" src="banner.png" alt="banner" width="1000" height="125">'
+        markup += '<img border="0" src="' + self.URL_BASE + '/gglogo.png" alt="gogeo logo" width="250" height="125">'
+        markup += '<img border="0" src="' + self.URL_BASE + '/banner.png" alt="banner" width="1000" height="125">'
         markup += '</div>'
         markup += '</br >'
         markup += '<div id="wrap">'
@@ -31,20 +35,21 @@ class MasterController:
 
         markup += '<div id="wrap4">'
 
-
+        print self._session._cookie
         if self._session.getState():
         
-            markup += '<form action="post/create" method="GET" class="post-form">'
+            markup += '<form action="' + self.URL_BASE + '/post/create" method="GET" class="post-form">'
             markup += '<p>'
             markup += '<label for="post">Post</label><br />'
             markup += '<textarea name="post" rows="5" cols="80"></textarea><br />'
             markup += '<input type="submit" value="Post" class="post-form-submit"/>'
             markup += '</p>'
             markup += '</form>'
+            markup += '<div class="post-form-links"><a href="' + self.URL_BASE + '/user/logout">Logout</a></div>'
 
         else:
 
-            markup += '<form action="user/login" method="POST" class="login-form">'
+            markup += '<form action="' + self.URL_BASE + '/user/login" method="POST" class="login-form">'
             markup += '<p>'
             markup += '<label for="user_name">User Name</label><br />'
             markup += '<input name="user_name" />'

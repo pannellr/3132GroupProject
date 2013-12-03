@@ -28,14 +28,14 @@ class User(Subject):
         return password
 
 
-    def build(self,user_name = None):
-        password = ''
+    def load(self,user_name = None):
+        self._user_name = user_name
 
-        if user_name:
+        if self._user_name:
             select = SelectBuilder()
-            select.setStatment('select *')
-            select.setFrom('from users')
-            select.setWhere('where user_name = "' + user_name +'"')
+            select.setStatement('select *')
+            select.setTables('from users')
+            select.setWhere('where user_name = "' + self._user_name +'"')
             result = self._db.execute(select)
             row = result.fetch_row(1,1)
             

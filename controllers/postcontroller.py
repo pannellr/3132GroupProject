@@ -16,6 +16,7 @@ class PostController(MasterController):
     _post = None
 
     def __init__(self, args=None):
+        super(PostController, self).__init__()
         self._post = Post()
         
 
@@ -29,7 +30,7 @@ class PostController(MasterController):
               api = True
               
         posts = None
-        content = None
+        content = ''
         
         if post_id:
             posts = self._post.fetch(post_id)
@@ -55,7 +56,11 @@ class PostController(MasterController):
 
             
         else:
-            content = self.markup(posts)
+            print 'Content-Type: text/html\n'
+            print
+            content += self.HEADER
+            content += self.markup(posts)
+            content += self.FOOTER
 
         print content
 

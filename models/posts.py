@@ -70,7 +70,8 @@ class Post(Subject):
                 insert.setStatement('insert into posts (user_id, post, lat, lng)')
                 insert.setValues('values ("1", "' + self._post + '" , "44.34567", "-66.78945")')
                 self._db.execute(insert);
-            except: print "Could not insert record"
+            except:
+                print "Could not insert record"
 
             self.notify()
         
