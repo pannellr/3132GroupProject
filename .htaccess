@@ -1,7 +1,7 @@
 RewriteEngine On
 
 #add your login in the rewrite rule
-RewriteBase /~kou/3132GroupProject
+RewriteBase /~pannell/3132GroupProject
 RewriteCond %{REQUEST_URI} !/css
 RewriteCond %{REQUEST_URI} !/js
 RewriteCond %{REQUEST_URI} !/img
