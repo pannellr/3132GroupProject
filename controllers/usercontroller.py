@@ -4,27 +4,34 @@
 import sys
 sys.path.append('../')
 import imports
-# add json for API
-import json
-#imort the user model
+## import the Post model
 from users import User
-# imort MasterControler for inheritance
+#import MasterController for inheritance
 from mastercontroller import MasterController
+from postcontroller import PostController
 
 class UserController(MasterController):
 
     _user = None
 
-    def __init__(self):
-        MasterController.__init__(self)
+    def __init__(self, args=None):
         self._user = User()
+        super(UserController, self).__init__()
+
     def login(self, args):
-        #print self._user.return_pw(args['user_name'])
-        if(self._user.return_pw(args['user_name'])==args['password']):
-            user_id = self._user.return_user_id(args['user_name'])
-            self._session.setCookie(user_id)
-            self._user.notify()
+
+        password = self._user.return_pw(args['user_name'])
+        if password['password'] == args['password']:
+            self._user.load(args['user_name'])
+            self._session.setCookie(self._user)
+
+        print self._session._cookie
+        self._user.attach(PostController)    
+        self._user.notify()
+            
+
     def logout(self, args):
-        if session.getState():
-            self._session.clear()
-            self._user.notify()
+        self._session.clearCookie()
+        print self._session._cookie
+        self._user.attach(PostController)
+        self._user.notify()

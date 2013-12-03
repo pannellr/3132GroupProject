@@ -1,48 +1,46 @@
-#!/usr/bin/env python
-import sys
-sys.path.append('../')
-import imports
+#!/local/bin/python
 
-from session import Session
 from subject import Subject
 from selectbuilder import SelectBuilder
 
 class User(Subject):
-    
-    def __init__(self):
-        super(User, self).__init__()
-        
 
-    # Database methods
-    def all(self):
-        all = None
-        return all
-			
-		
-	#Checks a user's password against the input username/password pair
-    def return_pw(self, user_name):
-        select = SelectBuilder()
-        select.setStatement('SELECT password')
-        select.setTables('from users')
-        select.setWhere('where user_name = "'+user_name+'"')
-        result = self._db.execute(select)
-        password = result.fetch_row(1,1)
-        return password[0]['password']
-		
-    def return_user_id(self, user_name):
-        select = SelectBuilder()
-        select.setStatement('SELECT user_id')
-        select.setTables('from users')
-        select.setWhere('where user_name = "'+user_name+'"')
-        result = self._db.execute(select)
-        user_id = result.fetch_row(1,1)
-        return user_id[0]['user_id']
-		
-    def return_user_role(self, user_name):
-        select = SelectBuilder()
-        select.setStaement('SELECT role')
-        selcet.setTables('from users')
-        selcet.setWhere('where user_name = "'+user_name+'"')
-        result = self._db.execute(select)
-        		
-		
+    _user_id = None
+    _user_name = None
+    _password = None
+    _role = None
+
+    def init(self, user=None):
+        super(User, self).__init__()
+
+    def return_pw(self, user_name = None):
+        password = ''
+
+        if user_name:
+            select = SelectBuilder()
+            select.setStatement('select password')
+            select.setTables('from users')
+            select.setWhere('where user_name = "' + user_name + '"')
+            result = self._db.execute(select)
+            row = result.fetch_row(1,1)
+            password = row[0]
+
+        return password
+
+
+    def load(self,user_name = None):
+        self._user_name = user_name
+
+        if self._user_name:
+            select = SelectBuilder()
+            select.setStatement('select *')
+            select.setTables('from users')
+            select.setWhere('where user_name = "' + self._user_name +'"')
+            result = self._db.execute(select)
+            row = result.fetch_row(1,1)
+            
+            self._user_id = row[0]['user_id']
+            self._user_name = row[0]['user_name']
+            self._role = row[0]['role']
+    
+    

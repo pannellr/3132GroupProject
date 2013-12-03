@@ -32,15 +32,9 @@ class Subject(object):
             pass
 
     def notify(self, modifier=None):
-        url = "http://web.cs.dal.ca/~kou/3132GroupProject/"
-        print "Status: 302 Moved"
-        print "Location: %s" % url
-        print
+        for observer in self._observers:
+            getattr(observer(), 'show')(modifier)
         
-        #for observer in self._observers:
-        #    if modifier != observer:
-        #       print modifier
-                
 
     def all(self, tableName):
         select = SelectBuilder()
@@ -48,8 +42,7 @@ class Subject(object):
         select.setTables('from ' + tableName)
         results = self._db.execute(select)
         return results
-
-
+    
     #accesors for error messages
     def setMessage(self, m):
         self._message = m

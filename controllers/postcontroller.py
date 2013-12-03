@@ -1,4 +1,4 @@
-#!//bin/env python
+#!/local/bin/python
 
 # add imports to path
 import sys
@@ -11,17 +11,15 @@ from posts import Post
 #import MasterController for inheritance
 from mastercontroller import MasterController
 
-
-
 class PostController(MasterController):
 
     _post = None
 
-    def __init__(self):
-        MasterController.__init__(self)
+    def __init__(self, args=None):
+        super(PostController, self).__init__()
         self._post = Post()
-
         
+
     def show(self, args=None):
         post_id = None
         api = False
@@ -32,7 +30,7 @@ class PostController(MasterController):
               api = True
               
         posts = None
-        content = None
+        content = ''
         
         if post_id:
             posts = self._post.fetch(post_id)
@@ -58,7 +56,11 @@ class PostController(MasterController):
 
             
         else:
-            content = self.markup(posts)
+            print 'Content-Type: text/html\n'
+            print
+            content += self.HEADER
+            content += self.markup(posts)
+            content += self.FOOTER
 
         print content
 
