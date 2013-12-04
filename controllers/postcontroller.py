@@ -21,6 +21,7 @@ class PostController(MasterController):
         
 
     def show(self, args=None):
+        posts = None
         post_id = None
         api = False
         if args:
@@ -32,32 +33,14 @@ class PostController(MasterController):
         posts = None
         content = ''
         
-        if post_id:
-            posts = self._post.fetch(post_id)
-        else:
-            posts = self._post.all()
+        posts = self._post.all()
+
+        print 'Content-Type: text/html\n'
+        print
         
-
         if api:
-            posts_dict = dict()
-            while True:
-                post = posts.fetch_row(1,1)
-                if not post: break
-                posts_dict[post[0]['post_id']] = {
-                    'post_id' : post[0]['post_id'],
-                    'user_id' : post[0]['user_id'],
-                    'lat' : str(post[0]['lat']),
-                    'lng' : str(post[0]['lng']),
-                    'post' : post[0]['post'],
-                    'created_at' : str(post[0]['created_at'])
-                    }
-
-            content = json.dumps(posts_dict)
-
-            
+            content = json.dumps(posts)
         else:
-            print 'Content-Type: text/html\n'
-            print
             content += self.HEADER
             content += self.markup(posts)
             content += self.FOOTER
@@ -66,20 +49,19 @@ class PostController(MasterController):
 
     def create(self, args):
         # Attach view to be updated
-        self._post.attach(self.show())
+        self._post.attach(PostController)
         # set fields
         self._post.post(args['post'])
-        #_post.user_id(args['user_id'])
+        self._post.user_id(args['user_id'])
         #_post.lat(args['lat'])
         #_post.lng(args['lng'])
 
         #save post
         self._post.save()
         
-    def edit(self, args):
-        post_id = args['post_id']
+    def delete(self, args):
+        self._post.attach(PostController)
+        self._post.destroy(args['post_id'])
 
-    def update(self, args):
-        post_id = args['post_id']
-        post = args['post']
+
         

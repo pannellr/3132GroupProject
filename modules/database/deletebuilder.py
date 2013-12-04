@@ -14,4 +14,10 @@ class DeleteBuilder(QueryBuilder):
     def getStatement(self):
         return self.statement.string
 
+    def getValues(self):
+        return ''
+
+    def commitMethod(self):
+        return 'commit'
+        
     

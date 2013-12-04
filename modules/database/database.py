@@ -29,7 +29,8 @@ class Database:
     def execute(self, querybuilder):
         results = None
         director = QueryDirector(querybuilder)
-        self.database_handle.getInstance().query(director.getQuery())
+        
+        self.database_handle.getInstance().query(director.getQuery().strip())
         if (querybuilder.commitMethod() == 'commit'):
             results = self.database_handle.getInstance().commit()
         else:

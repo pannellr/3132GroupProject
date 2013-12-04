@@ -16,12 +16,13 @@ class Session(object):
     _role = None
 
     def __init__(self):
-        cookie_string = os.environ['HTTP_COOKIE']
+        cookie_string = os.environ.get('HTTP_COOKIE')
         self._cookie = Cookie.SimpleCookie()
         if cookie_string:
             self._cookie.load(cookie_string)
             if 'user_id' in self._cookie.keys():
                 self._user_id = self._cookie['user_id'].value
+                self._role = self._cookie['role'].value
 
     def getState(self):
         if self._user_id:

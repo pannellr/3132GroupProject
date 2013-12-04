@@ -2,6 +2,8 @@
 
 from subject import Subject
 from insertbuilder import InsertBuilder
+from selectbuilder import SelectBuilder
+from deletebuilder import DeleteBuilder
 
 class Post(Subject):
     _post_id = None
@@ -54,7 +56,38 @@ class Post(Subject):
 
     # Database methods
     def all(self):
-        return super(Post, self).all('posts')
+        posts = dict()
+        result = super(Post, self).all('posts')
+        while True:
+            post = result.fetch_row(1,1)
+            if not post: break
+            post_id = post[0]['post_id']
+            posts[post_id] = { 'post_id' : str(post[0]['post_id']),
+                               'user_id' : str(post[0]['user_id']),
+                               'lat' : str(post[0]['lat']),
+                               'lng' : str(post[0]['lng']),
+                               'post' : str(post[0]['post']),
+                               'comments' : dict(),
+                               'created_at' : post[0]['created_at'].strftime('%m/%d/%Y')
+                               }
+            #get the comments
+            select = SelectBuilder()
+            select.setStatement('select *')
+            select.setTables('from comments')
+            select.setWhere('where post_id = ' + str(post[0]['post_id']))
+            comments = self._db.execute(select)
+
+            while True:
+                comment = comments.fetch_row(1,1)
+                if not comment: break
+                comment_id = comment[0]['comment_id']
+                posts[post_id]['comments'][comment_id] = { 'comment_id' : str(comment[0]['comment_id']),
+                                                  'user_id' : str(comment[0]['user_id']),
+                                                  'comment' : str(comment[0]['comment']),
+                                                  'created_at' : comment[0]['created_at'].strftime('%m/%d/%Y')
+                                                  }
+        return posts
+        
         
 
     def fetch(self, post_id):
@@ -85,5 +118,8 @@ class Post(Subject):
             
  #       self.notify()
 
-    def delete(self, post_id):
-        self._db.query('delete from posts where post_id = ' + post_id)
+    def destroy(self, post_id):
+        delete = DeleteBuilder()
+        delete.setStatement('delete from posts where post_id = ' + str(post_id))
+        self._db.execute(delete)
+        self.notify()

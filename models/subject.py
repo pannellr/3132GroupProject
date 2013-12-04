@@ -9,6 +9,7 @@ import imports
 from database import Database
 from selectbuilder import SelectBuilder
 from insertbuilder import InsertBuilder
+from updatebuilder import UpdateBuilder
 
 class Subject(object):
 
