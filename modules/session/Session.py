@@ -5,7 +5,7 @@ import os
 import Cookie
 import datetime
 import random
-#from State import *
+from State import *
 		
 class Session(object):
 
@@ -16,7 +16,7 @@ class Session(object):
     _role = None
 
     def __init__(self):
-        cookie_string = os.environ['HTTP_COOKIE']
+        cookie_string = os.environ.get('HTTP_COOKIE')
         self._cookie = Cookie.SimpleCookie()
         if cookie_string:
             self._cookie.load(cookie_string)
@@ -25,9 +25,11 @@ class Session(object):
 
     def getState(self):
         if self._user_id:
-            return True
+            state = ActiveState()
+            return state.process()
         else:
-            return False
+            state = ExpireState()
+            return state.process()
 
 
     def setCookie(self, user):

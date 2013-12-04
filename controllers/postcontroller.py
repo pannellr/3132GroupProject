@@ -66,7 +66,7 @@ class PostController(MasterController):
 
     def create(self, args):
         # Attach view to be updated
-        self._post.attach(self.show())
+        self._post.attach(PostController)
         # set fields
         self._post.post(args['post'])
         #_post.user_id(args['user_id'])
