@@ -22,6 +22,7 @@ class Session(object):
             self._cookie.load(cookie_string)
             if 'user_id' in self._cookie.keys():
                 self._user_id = self._cookie['user_id'].value
+                self._role = self._cookie['role'].value
 
     def getState(self):
         if self._user_id:
