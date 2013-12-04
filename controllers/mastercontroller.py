@@ -12,7 +12,7 @@ class MasterController(object):
     #import header and footer
     HEADER = open("header.html", "r").read()
     FOOTER = open("footer.html", "r").read()
-    URL_BASE = '/~pannell/3132GroupProject'
+    URL_BASE = '/~kou/3132GroupProject'
     
     _session = None
 

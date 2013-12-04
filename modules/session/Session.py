@@ -5,7 +5,7 @@ import os
 import Cookie
 import datetime
 import random
-#from State import *
+from State import *
 		
 class Session(object):
 
@@ -26,9 +26,11 @@ class Session(object):
 
     def getState(self):
         if self._user_id:
-            return True
+            state = ActiveState()
+            return state.process()
         else:
-            return False
+            state = ExpireState()
+            return state.process()
 
 
     def setCookie(self, user):
