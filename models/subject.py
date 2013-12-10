@@ -19,7 +19,7 @@ class Subject(object):
     
     def __init__(self):
         self._observers = []
-        self._db = Database('pannell', 'pannell', 'B00609201', 'db.cs.dal.ca')
+        self._db = Database('', '', '', 'db.cs.dal.ca')
         self._db.connect()
 
     def attach(self, observer):
